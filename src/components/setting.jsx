@@ -32,7 +32,7 @@ export const Setting = (props) => {
   const [isShowActionable, setIsShowActionable] = useState(true);
 
   // backend通信用
-	const url = "http://127.0.0.1:8000";
+	const url = "https://polar-tor-22320.herokuapp.com";
 
   const btnClick = () => {
     // 設定情報を非表示にする
