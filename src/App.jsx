@@ -5,7 +5,7 @@ import { Play } from "./components/pages/play"
 
 function App() {
 	const [data, setData] = React.useState();
-	const url = "https://polar-tor-22320.herokuapp.com";
+	// const url = "https://polar-tor-22320.herokuapp.com";
 
 	return (
 		<div>
