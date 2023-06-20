@@ -17,7 +17,7 @@ import Select from '@mui/material/Select';
 
 export const Setting = (props) => {
   // state
-  const [numPlayer, setNumPlayer] = useState("4");
+  const [numPlayer, setNumPlayer] = useState(4);
   const [playerType1, setPlayerType1] = useState("manual");
   const [playerType2, setPlayerType2] = useState("auto");
   const [playerType3, setPlayerType3] = useState("auto");
@@ -98,7 +98,7 @@ isAvility: ${isAvility}\nisStairs: ${isStairs}\nisReturnSpade3: ${isReturnSpade3
   const handleChange = (event) => {
     // selectのnameの値で分岐
     if (event.target.name == "numPlayer") {
-      setNumPlayer(event.target.value);
+      setNumPlayer(Number(event.target.value));
     }else if (event.target.name == "playerType1") {
       setPlayerType1(event.target.value)
     }else if (event.target.name == "playerType2") {

@@ -118,7 +118,9 @@ export const Game = (props) => {
   const [end3, setEnd3] = useState("");  // 3位
   const [end4, setEnd4] = useState("");  // 4位
   const [dieCards, setDieCards] = useState([]);  // 捨てカード
+  const [count, setCount ] = useState(1);
   const [turn, setTurn] = useState(1);  // turn
+  const [totalAction, setTotalAction ] = useState(1);  // アクションの合計数
   const [lastCard, setLastCard] = useState([]);  // 最後のカード
   const [id1Cards, setId1Cards] = useState([]);  // id1の手札
   const [id2Cards, setId2Cards] = useState([]);  // id2の手札
@@ -162,7 +164,8 @@ export const Game = (props) => {
       setEnd3(props.data.game_info.end_player["3"]);
       setEnd4(props.data.game_info.end_player["4"]);
       setDieCards(props.data.game_info.die_cards);
-      setTurn(props.data.game_info.count);
+      setTurn(props.data.game_info.turn);
+      setCount(props.data.game_info.count);
       setLastCard(props.data.game_info.last_card);
       setId1Cards(props.data.game_info.id1_cards);
       setId2Cards(props.data.game_info.id2_cards);
@@ -262,7 +265,9 @@ nextActionableCards: ${nextActionableCards}`
       "die_cards": dieCards,
       "last_card": lastCard,
       "last_player": lastPlayer,
-      "count": turn,
+      "turn": turn,
+      "count": count,
+      "totalAction": totalAction,
       "revolution": revolution,
       "end_player": endPlayer,
       "players_order": playersOrder,
@@ -290,7 +295,9 @@ nextActionableCards: ${nextActionableCards}`
         setEnd3(response.data.game_info.end_player["3"]);
         setEnd4(response.data.game_info.end_player["4"]);
         setDieCards(response.data.game_info.die_cards);
-        setTurn(response.data.game_info.count);
+        setTurn(response.data.game_info.turn);
+        setCount(response.data.game_info.count);
+        setTotalAction(response.data.game_info.totalAction);
         setLastCard(response.data.game_info.last_card);
         setId1Cards(response.data.game_info.id1_cards);
         setId2Cards(response.data.game_info.id2_cards);
@@ -357,7 +364,9 @@ nextActionableCards: ${nextActionableCards}`
       "die_cards": dieCards,
       "last_card": lastCard,
       "last_player": lastPlayer,
-      "count": turn,
+      "count": count,
+      "turn": turn,
+      "totalAction": totalAction,
       "revolution": revolution,
       "end_player": endPlayer,
       "players_order": playersOrder,
@@ -385,7 +394,9 @@ nextActionableCards: ${nextActionableCards}`
         setEnd3(response.data.game_info.end_player["3"]);
         setEnd4(response.data.game_info.end_player["4"]);
         setDieCards(response.data.game_info.die_cards);
-        setTurn(response.data.game_info.count);
+        setTurn(response.data.game_info.turn);
+        setCount(response.data.game_info.count);
+        setTotalAction(response.data.game_info.totalAction);
         setLastCard(response.data.game_info.last_card);
         setId1Cards(response.data.game_info.id1_cards);
         setId2Cards(response.data.game_info.id2_cards);
@@ -583,7 +594,7 @@ nextActionableCards: ${nextActionableCards}`
             }
           </Grid>
           {/* ID2, 墓地, ID4 */}
-          <Grid container alignItems="center" ml="4%" height="455px" width="970px">
+          <Grid container alignItems="center" ml="8%" height="455px" width="970px">
             {/* ID2 */}
             <Grid item>
             <Grid container alignItems="center" justify="center" width="150px">
@@ -651,7 +662,7 @@ nextActionableCards: ${nextActionableCards}`
             </Grid>
             {/* プレイ情報 */}
             <Grid item width="260px"> 
-                <Box pr="40px" pb="5px" textAlign={"right"} fontSize="20px">tern: {turn}</Box>
+                <Box pr="40px" pb="5px" textAlign={"right"} fontSize="20px">tern: {count}.{turn}</Box>
                   <Box textAlign={"right"} pr="40px">
                     {lastCard.length === 0 && <img src={bk0} alt="サンプル画像" width="60" height="60"/>}
                     {lastCard.length === 1 && <img src={stringToUndefined[lastCard[0]]} alt="サンプル画像" width="60" height="60"/>}
